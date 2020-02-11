@@ -1,9 +1,11 @@
 <div class="container text-center">
     <div class="jumbo_card bg-light">Administrators</div>
 </div>
-
 <div class="container">
     <div class="py-5">
+        <button type="button" class="btn btn-primary my-3" data-toggle="modal" data-target="#staticBackdrop">
+            <i class="fas fa-plus"></i> Add Admin
+        </button>
         <table class="table table-hover bg-light">
             <thead>
                 <tr>
@@ -26,3 +28,40 @@
         </table>
     </div>
 </div>
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-backdrop="static" tabindex="-1" role="dialog"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Add Administrator</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!--modalcontent-->
+                <form method="POST" onsubmit="add(event)">
+                    <div class="form-group">
+                        <label for="fname">First Name</label>
+                        <input type="text" class="form-control" name="fname" id="fname">
+                    </div>
+                    <div class="form-group">
+                        <label for="lname">Last Name</label>
+                        <input type="text" class="form-control" name="lname" id="lname">
+                    </div>
+                    <div class="form-group">
+                        <label for="age">Age</label>
+                        <input type="number" class="form-control" name="age" id="age">
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Add</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="js/register.js"></script>

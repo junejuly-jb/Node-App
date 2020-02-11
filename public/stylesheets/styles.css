@@ -5,3 +5,7 @@
     font-size: 30px;
     color: grey;
 }
+
+.btn:focus{
+    outline: none !important;
+}
