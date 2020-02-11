@@ -21,7 +21,7 @@ module.exports = (express, db) => {
         });
     });
 
-    api.post("/users", async (req, res) => {
+    api.post("/createUser", async (req, res) => {
         const fname = req.body.fname;
         const lname = req.body.lname;
         const age = req.body.age;

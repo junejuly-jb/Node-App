@@ -1,0 +1,28 @@
+<div class="container text-center">
+    <div class="jumbo_card bg-light">Administrators</div>
+</div>
+
+<div class="container">
+    <div class="py-5">
+        <table class="table table-hover bg-light">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Age</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#users}}
+                <tr>
+                    <th scope="row">{{id}}</th>
+                    <td>{{fname}}</td>
+                    <td>{{lname}}</td>
+                    <td>{{age}}</td>
+                </tr>
+                {{/users}}
+            </tbody>
+        </table>
+    </div>
+</div>
