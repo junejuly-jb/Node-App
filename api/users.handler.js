@@ -43,21 +43,24 @@ module.exports = (express, db) => {
 
     });
 
-    api.delete("/users/:id", async (req, res) => {
+    api.delete("/deleteUser/:id", async (req, res) => {
         const id = req.params.id;
         const sqlDel = "DELETE FROM users WHERE id=?";
         try {
             await db.query(sqlDel, [id]);
-
         } catch (err) {
             await db.rollback();
+
+
         } finally {
             await db.commit();
         }
         return res.status(200).json({
             message: "Successfully Deleted!",
-            success: true
+            success: true,
+            data: id
         });
+
     });
 
     api.put("/updateUsers/:id", async (req, res) => {

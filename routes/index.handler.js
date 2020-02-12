@@ -19,6 +19,27 @@ module.exports = (express) => {
                 });
             });
     });
+
+    // router.get('/user-delete/:id', (req, res) => {
+    //     const id = req.params.id;
+    //     const userURL = API_BASE_URL + "/user-delete/" + id;
+
+
+    //     deleteUser(userURL)
+    //         .then((res) => {
+    //             return res.json();
+    //         })
+    //         .then((data) => {
+    //             return res.render('index/index', {
+    //                 if (!data.success) {
+
+    //                 }
+
+    //             });
+    //         });
+    // })
+
+
     return router;
 }
 
@@ -28,3 +49,10 @@ function getAllUsers(url) {
     }
     return fetch(url, options);
 }
+
+// function deleteUser(url) {
+//     const options = {
+//         method: 'DELETE',
+//     }
+//     return fetch(url, options);
+// }

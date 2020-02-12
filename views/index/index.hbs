@@ -1,6 +1,7 @@
 <div class="container text-center">
     <div class="jumbo_card bg-light">Administrators</div>
 </div>
+{{message}}
 <div class="container">
     <div class="py-5">
         <button type="button" class="btn btn-primary my-3" data-toggle="modal" data-target="#staticBackdrop">
@@ -13,6 +14,7 @@
                     <th scope="col">First Name</th>
                     <th scope="col">Last Name</th>
                     <th scope="col">Age</th>
+                    <th scope="col">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -22,6 +24,12 @@
                     <td>{{fname}}</td>
                     <td>{{lname}}</td>
                     <td>{{age}}</td>
+                    <td>
+                        <form action="GET" onsubmit="deleteUser(event)">
+                            <span><a class="btn btn-danger" href="/{{id}}" id="id"> DELETE
+                                </a></span>
+                        </form>
+                    </td>
                 </tr>
                 {{/users}}
             </tbody>
@@ -29,7 +37,7 @@
     </div>
 </div>
 <!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-backdrop="static" tabindex="-1" role="dialog"
+<div class=" modal fade" id="staticBackdrop" data-backdrop="static" tabindex="-1" role="dialog"
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -65,3 +73,4 @@
 </div>
 
 <script src="js/register.js"></script>
+<script src="js/delete.js"></script>

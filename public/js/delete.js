@@ -1,16 +1,16 @@
 'use strict';
 const API_BASE_URL = "http://localhost:3000/api/v1";
 
-function add(evt) {
+function deleteUser(evt) {
     evt.preventDefault();
 
-    const fname = document.getElementById("fname").value;
-    const lname = document.getElementById("lname").value;
-    const age = document.getElementById("age").value;
+    const id = document.getElementById("id").value;
 
-    const user = { fname, lname, age }
+    console.log(id);
 
-    doAdd(user)
+
+
+    doDelete(id)
         .then((res) => {
             return res.json();
         })
@@ -23,12 +23,13 @@ function add(evt) {
             alert(data.message);
             location.href = '/';
         });
+
 }
 
-function doAdd(user) {
-    const url = API_BASE_URL + "/createUser";
+function doDelete(id) {
+    const url = API_BASE_URL + "/deleteUser";
     const options = {
-        method: 'POST',
+        method: 'GET',
         body: JSON.stringify(user),
         headers: {
             'Content-Type': 'application/json'
@@ -36,4 +37,3 @@ function doAdd(user) {
     }
     return fetch(url, options);
 }
-
