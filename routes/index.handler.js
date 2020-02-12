@@ -20,6 +20,23 @@ module.exports = (express) => {
             });
     });
 
+    router.get('/viewUserInfo/:id', (req, res) => {
+        const id = req.params.id
+        const userURL = API_BASE_URL + "/viewUserInfo/" + id;
+
+        getUserInfo(userURL)
+        .then((res) => {
+            return res.json();
+        })
+        .then((data) => {
+            return res.render('userInfo/userInfo', {
+                showHeader: false,
+                success: true,
+                user: data.data
+            })
+        })
+    });
+
     // router.get('/user-delete/:id', (req, res) => {
     //     const id = req.params.id;
     //     const userURL = API_BASE_URL + "/user-delete/" + id;
@@ -50,6 +67,12 @@ function getAllUsers(url) {
     return fetch(url, options);
 }
 
+function getUserInfo(url) {
+    const options = {
+        method: 'GET',
+    }
+    return fetch(url, options);
+}
 // function deleteUser(url) {
 //     const options = {
 //         method: 'DELETE',

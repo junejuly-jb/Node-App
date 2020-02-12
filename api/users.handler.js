@@ -20,7 +20,26 @@ module.exports = (express, db) => {
             data: users
         });
     });
+    api.get("/viewUserInfo/:id", async (req, res) =>{
+        const id = req.params.id;
 
+        let viewSql = "SELECT * FROM users WHERE id = ?";
+        const viewResult = await db.query(viewSql, [id]);
+
+        user = [];
+        for(let i = 0; i < viewResult.length; i++){
+            user.push({
+                id: viewResult[i].id,
+                fname: viewResult[i].fname,
+                lname: viewResult[i].lname,
+                age: viewResult[i].age
+            });
+        }
+        return res.status(200).json({
+            success: true,
+            data: user
+        });
+    });
     api.post("/createUser", async (req, res) => {
         const fname = req.body.fname;
         const lname = req.body.lname;
@@ -50,15 +69,15 @@ module.exports = (express, db) => {
             await db.query(sqlDel, [id]);
         } catch (err) {
             await db.rollback();
-
-
+            res.redirect('/')
         } finally {
             await db.commit();
+            res.redirect('/')
+            req.flash('success', 'User deleted successfully! id = ' + id)
         }
         return res.status(200).json({
             message: "Successfully Deleted!",
-            success: true,
-            data: id
+            success: true
         });
 
     });

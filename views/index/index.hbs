@@ -24,12 +24,10 @@
                     <td>{{fname}}</td>
                     <td>{{lname}}</td>
                     <td>{{age}}</td>
+                    
                     <td>
-                        <form action="GET" onsubmit="deleteUser(event)">
-                            <span><a class="btn btn-danger" href="/{{id}}" id="id"> DELETE
-                                </a></span>
-                        </form>
-                    </td>
+                        <a href="viewUserInfo/{{id}}" class="btn btn-primary">VIEW</a>
+                        <a href="deleteUser/{{id}}" class="btn btn-danger">DELETE</a></td>
                 </tr>
                 {{/users}}
             </tbody>
